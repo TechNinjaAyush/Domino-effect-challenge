@@ -10,7 +10,7 @@ import (
 func main() {
 
 	port := "8080"
-	fmt.Println("Server started succesfully...............")
+	fmt.Println("Serverssss started succesfully...............")
 
 	http.HandleFunc("/ServiceGraph", controllers.JsonMarhslling)
 
