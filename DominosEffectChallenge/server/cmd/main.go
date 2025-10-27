@@ -10,7 +10,7 @@ import (
 func main() {
 
 	port := "8080"
-	fmt.Println("Server started succesfully...")
+	fmt.Println("Server started succesfully...............")
 
 	http.HandleFunc("/ServiceGraph", controllers.JsonMarhslling)
 
@@ -19,10 +19,5 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error in starting server: %v", err)
 	}
-
-	
-
-
-	
 
 }
