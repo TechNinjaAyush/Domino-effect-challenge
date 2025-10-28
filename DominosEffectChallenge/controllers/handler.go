@@ -6,9 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
-
-	// "servicedependencygraph/controllers"
-	"servicedependencygraph/models"
+	"servicedependecygraph/DominosEffectChallenge/models"
 )
 
 func BuildReverseAdjacencyGraph(services []models.ServiceGraph) map[string][]models.ServiceGraph {
@@ -25,9 +23,6 @@ func BuildReverseAdjacencyGraph(services []models.ServiceGraph) map[string][]mod
 }
 
 func DFS_TRAVERSAL(Service_Name string, service map[string][]models.ServiceGraph, visited_services map[string]bool, impacted_services map[string]map[string]bool) {
-
-       
-
 
 	if visited_services[Service_Name] {
 		return
