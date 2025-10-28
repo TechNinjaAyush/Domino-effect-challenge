@@ -22,7 +22,7 @@ jobs:
           go-version: '1.23.1' # Specify your Go version
 
       - name: Build Golang application
-        run: go build -o myapp .DominosEffectChallenge/server/cmd
+        run: go build -o myapp ./DominosEffectChallenge/server/cmd
 
       - name: Setup SSH Agent
         uses: webfactory/ssh-agent@v0.9.0
