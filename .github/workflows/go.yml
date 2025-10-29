@@ -44,15 +44,17 @@ jobs:
       - name: Ensure target directory exists
         run: ssh -o ConnectTimeout=10 ubuntu@3.109.214.22 "mkdir -p /home/ubuntu/service-dependency"
 
-      - name: Deploy to Server (fast + background)
+      - name: Deploy to Server (safe + background)
         run: |
-          scp -C -o ConnectTimeout=10 ./myapp ubuntu@3.109.214.22:/home/ubuntu/service-dependency/my-app
+          scp -C -o ConnectTimeout=10 ./myapp ubuntu@3.109.214.22:/home/ubuntu/service-dependency/myapp
           ssh -o ConnectTimeout=10 ubuntu@3.109.214.22 "
             cd /home/ubuntu/service-dependency &&
-            echo '🔹 Stopping old instance (if any)...' &&
+            echo 'Stopping old instance (if any)...' &&
             pkill myapp || true &&
-            echo '🔹 Starting new version...' &&
-            nohup ./myapp > myapp.log 2>&1 &
+            mv myapp myapp_new &&
+            echo 'Starting new version...' &&
+            nohup ./myapp_new > myapp.log 2>&1 &
+            mv -f myapp_new myapp
             sleep 3 &&
-            pgrep -a myapp || echo '⚠️ myapp may not have started properly.'
+            pgrep -a myapp || echo 'Warning: myapp may not have started properly.'
           "
