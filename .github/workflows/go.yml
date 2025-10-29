@@ -46,7 +46,7 @@ jobs:
 
       - name: Deploy to Server (fast + background)
         run: |
-          scp -C -o ConnectTimeout=10 ./myapp ubuntu@3.109.214.22:/home/ubuntu/service-dependency/myapp
+          scp -C -o ConnectTimeout=10 ./myapp ubuntu@3.109.214.22:/home/ubuntu/service-dependency/my-app
           ssh -o ConnectTimeout=10 ubuntu@3.109.214.22 "
             cd /home/ubuntu/service-dependency &&
             echo '🔹 Stopping old instance (if any)...' &&
