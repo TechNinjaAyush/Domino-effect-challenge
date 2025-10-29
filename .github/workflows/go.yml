@@ -39,5 +39,7 @@ jobs:
       - name: Deploy to Server
         run: |
           scp ./myapp ubuntu@3.109.214.22:~/service-dependency/myapp
-          ssh ubuntu@3.109.214.22 "sudo systemctl restart myapp"
+          ssh ubuntu@3.109.214.22 "cd ~/service-dependency &&
+            pkill myapp || true &&
+            nohup ./myapp > myapp.log 2>&1 &"
      
