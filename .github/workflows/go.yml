@@ -39,7 +39,5 @@ jobs:
       - name: Deploy to Server
         run: |
           scp ./myapp ubuntu@3.109.214.22:~/service-dependency/myapp
-          ssh user@3.109.214.22 "sudo systemctl restart myapp"
-      - env:
-         SSH_USER: ubuntu
-         SSH_HOST: 3.109.214.22
+          ssh ubuntu@3.109.214.22 "sudo systemctl restart myapp"
+     
